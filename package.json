@@ -34,7 +34,7 @@
     "name": "Ehsan Golmakani",
     "url": "https://ehsan.js.org"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@flazepe/deezer.js": "^1.1.0",
     "@types/node": "^17.0.16",
