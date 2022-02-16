@@ -1,7 +1,7 @@
 # Music-Engines
 
 <a href="https://github.com/EhsanFox/music-engines/">
-    <img src="https://raw.githubusercontent.com/EhsanFox/music-engines/main/images/music-engines-logo.png" width="260" align="right" alt="music-engines-logo">
+    <img src="https://github.com/EhsanFox/music-engine/raw/main/images/music-engines-logo.png" width="260" align="right" alt="music-engines-logo">
 </a>
 
 > music-engines is a package to fetch a music/artist/album or even playlist from the platform you choose, there multi platforms that are supported in this package, so there is no need for any others....
