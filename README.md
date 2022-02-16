@@ -1,13 +1,14 @@
-# Music-Engine
+# Music-Engines
 
-<a href="https://github.com/EhsanFox/music-engine/">
-    <img src="https://raw.githubusercontent.com/EhsanFox/music-engine/main/images/music-engine-logo.png" width="260" align="right" alt="music-engine-logo">
+<a href="https://github.com/EhsanFox/music-engines/">
+    <img src="https://raw.githubusercontent.com/EhsanFox/music-engines/main/images/music-engines-logo.png" width="260" align="right" alt="music-engines-logo">
 </a>
 
-> music-engine is a package to fetch a music/artist/album or even playlist from the platform you choose, there multi platforms that are supported in this package, so there is no need for any others....
+> music-engines is a package to fetch a music/artist/album or even playlist from the platform you choose, there multi platforms that are supported in this package, so there is no need for any others....
 
 ## Table of Contents
-- [Why music-engine?](#why-music-engine)
+- [Why music-engines?](#why-music-engines)
+- [Installation](#installation)
 - [Features](#features)
 - [Platforms](#platforms)
 - [Documents](#documents)
@@ -16,8 +17,17 @@
     - [Discord Bot](#discord-bot)
 - [Credits](#credits)
 
-### Why music-engine?
+### Why music-engines?
 music-engine currently Supports **4** biggest platform that we all know all-in-one package and access to the Audio buffers directly from the platform API, so we are **all-in-one** and we have **download feature**
+
+### Installation
+- Using NPM
+
+`npm install music-engine`
+
+- Using yarn
+
+`yarn add music-engine`
 
 ### Features
 - [x] Custom Data Wrapper
@@ -29,7 +39,7 @@ music-engine currently Supports **4** biggest platform that we all know all-in-o
 - [x] SoundCloud
 - [x] Spotify
 - [x] Deezer
-- [] Radio Javan (Maybe, maybe not)
+- [ ] Radio Javan (Maybe, maybe not)
 
 ### Documents
 at the time you are reading this, i'm probably working on it...
@@ -38,7 +48,7 @@ at the time you are reading this, i'm probably working on it...
 
 #### YouTube Downloader
 ```js
-const { YouTube } = require("music-engine");
+const { YouTube } = require("music-engines");
 const myEngine = new YouTube();
 
 myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })
@@ -55,7 +65,7 @@ myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })
 
 #### Discord Bot
 ```js
-const { YouTube } = require("music-engine");
+const { YouTube } = require("music-engines");
 const myEngine = new YouTube();
 
 myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })

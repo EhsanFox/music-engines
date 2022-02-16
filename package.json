@@ -1,5 +1,5 @@
 {
-  "name": "music-engine",
+  "name": "music-engines",
   "version": "1.0.0",
   "description": "Get Your favorite Music from anywhere you like.",
   "main": "dist/src/index.js",
@@ -8,12 +8,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EhsanFox/music-engine.git"
+    "url": "git+https://github.com/EhsanFox/music-engines.git"
   },
   "bugs": {
-    "url": "https://github.com/EhsanFox/music-engine/issues"
+    "url": "https://github.com/EhsanFox/music-engines/issues"
   },
-  "homepage": "https://github.com/EhsanFox/music-engine#readme",
+  "homepage": "https://github.com/EhsanFox/music-engines#readme",
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=7.0.0"
