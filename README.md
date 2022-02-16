@@ -8,7 +8,7 @@ Search and Get the Music that you like from anywhere!
 - [Platforms](#platforms)
 - [Documents](#documents)
 - [Examples](#examples)
-    - [YouTube Downloader](#youTube-downloader)
+    - [YouTube Downloader](#youtube-downloader)
     - [Discord Bot](#discord-bot)
 - [Credits](#credits)
 
