@@ -1,8 +1,12 @@
-# 🚀 Music-Engine
-Search and Get the Music that you like from anywhere!
+# Music-Engine
+
+<a href="https://github.com/EhsanFox/music-engine/">
+    <img src="https://raw.githubusercontent.com/EhsanFox/music-engine/main/images/music-engine-logo.png" width="260" align="right" alt="music-engine-logo">
+</a>
+
+> music-engine is a package to fetch a music/artist/album or even playlist from the platform you choose, there multi platforms that are supported in this package, so there is no need for any others....
 
 ## Table of Contents
-- [What is music-engine?](#what-is-music-engine)
 - [Why music-engine?](#why-music-engine)
 - [Features](#features)
 - [Platforms](#platforms)
@@ -11,10 +15,6 @@ Search and Get the Music that you like from anywhere!
     - [YouTube Downloader](#youtube-downloader)
     - [Discord Bot](#discord-bot)
 - [Credits](#credits)
-
-### What is music-engine?
-music-engine is a package to fetch a music/artist/album or even playlist from the platform you choose,
-there multi platforms that are supported in this package, so there is no need for any others....
 
 ### Why music-engine?
 music-engine currently Supports **4** biggest platform that we all know all-in-one package and access to the Audio buffers directly from the platform API, so we are **all-in-one** and we have **download feature**
