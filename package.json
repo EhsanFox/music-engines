@@ -3,6 +3,21 @@
   "version": "1.0.0",
   "description": "Get Your favorite Music from anywhere you like.",
   "main": "dist/src/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EhsanFox/music-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EhsanFox/music-engine/issues"
+  },
+  "homepage": "https://github.com/EhsanFox/music-engine#readme",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
+  },
   "scripts": {
     "build": "cd src && tsc --project ../tsconfig.json",
     "test-yt": "ts-node test/youtube.ts",
@@ -14,20 +29,6 @@
     "jest-sc": "node dist/test/soundcloud.js",
     "jest-dz": "node dist/test/deezer.js"
   },
-  "keywords": [
-    "music",
-    "musics",
-    "youtube",
-    "music-bot",
-    "spotify",
-    "soundcloud",
-    "discord-music-bot",
-    "discord-bot",
-    "deezer",
-    "deezer-api",
-    "setar",
-    "setar-bot"
-  ],
   "author": {
     "email": "ehsan8184@gmail.com",
     "name": "Ehsan Golmakani",
@@ -52,5 +53,19 @@
     "jest": "^27.5.1",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
-  }
+  },
+  "keywords": [
+    "music",
+    "musics",
+    "youtube",
+    "music-bot",
+    "spotify",
+    "soundcloud",
+    "discord-music-bot",
+    "discord-bot",
+    "deezer",
+    "deezer-api",
+    "setar",
+    "setar-bot"
+  ]
 }

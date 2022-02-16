@@ -1,0 +1,29 @@
+name: 📤 | Publish Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 💥 | Checkout
+        uses: actions/checkout@v1
+
+      - name: 🚀 | Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      
+      - name: 📩 | Install Packages
+        run: npm install
+
+      - name: 🏗 | Compile TS
+        run: npm run build
+        
+      - name: 🎉 | Publish Package
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
