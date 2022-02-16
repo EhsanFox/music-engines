@@ -88,4 +88,4 @@ myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })
 - More Examples would be added soon (PR's are welcome)
 
 ### Credits
-- Thanks to [Hooman](https://github.com/Scrip7) for all the helps on the package and Future PR's
+- Thanks to [Kambiz](https://github.com/Scrip7) for all the helps on the package and Future PR's

@@ -1,6 +1,6 @@
 {
   "name": "music-engines",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-beta.1",
   "description": "Get Your favorite Music from anywhere you like.",
   "main": "dist/src/index.js",
   "files": [
