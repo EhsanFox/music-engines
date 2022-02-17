@@ -1,4 +1,15 @@
 {
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "docs",
+    "pretty": true,
+    "theme": "github-wiki",
+    "name": "Music Engines Docs",
+    "disableSources": true,
+    "hideGenerator": true,
+    "excludePrivate": true,
+    "readme": "./README.md"
+  },
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 

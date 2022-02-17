@@ -1,4 +1,4 @@
-name: 📤 | Publish Package
+name: 📤 | Publish Package & Build Docs
 
 on:
   push:
@@ -27,3 +27,31 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: 💥 | Checkout
+        uses: actions/checkout@v2
+
+      - name: 🚀 | Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+        
+      - name: 📩 | Install Packages
+        run: npm install
+
+      - name: 🛠 | Generating
+        run: npm run build-docs
+
+      - name: 🔴 | Publish Docs
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages 
+          folder: docs/
