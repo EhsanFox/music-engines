@@ -42,7 +42,7 @@ music-engine currently Supports **4** biggest platform that we all know all-in-o
 - [ ] Radio Javan (Maybe, maybe not)
 
 ### Documents
-at the time you are reading this, i'm probably working on it...
+Documents are live at [/music-engines](https://ehsan.js.org/music-engines/)
 
 ### Examples
 
