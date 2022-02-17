@@ -51,7 +51,8 @@ jobs:
         run: npm run build-docs
 
       - name: 🔴 | Publish Docs
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+        uses: SwiftDocOrg/github-wiki-publish-action@v1
         with:
-          branch: gh-pages 
-          folder: docs/
+          path: "docs"
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
