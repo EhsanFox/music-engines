@@ -6,10 +6,10 @@ import { downloadOptions } from "ytdl-core";
 import DisYT from "discord-ytdl-core";
 import { YouTube } from "../youtube"
 import { YouTubeTrack } from "../youtube/wrappers";
+import { Base } from "../Base";
 
-class SpotifyTrack implements SPTrack {
+class SpotifyTrack extends Base implements SPTrack {
 
-    readonly platform: string;
     readonly picture: string;
     readonly id: string;
     readonly url: string;
@@ -19,7 +19,7 @@ class SpotifyTrack implements SPTrack {
 
     constructor(data: any)
     {
-        this.platform = 'spotify';
+        super('spotify');
         this.raw = data;
 
         this.id = data.id;
@@ -73,8 +73,8 @@ class SpotifyTrack implements SPTrack {
     }
 }
 
-class SpotifyAlbum implements SPAlbum {
-    readonly platform: string;
+class SpotifyAlbum extends Base implements SPAlbum {
+
     readonly picture: string;
     readonly id: string;
     readonly url: string;
@@ -84,7 +84,7 @@ class SpotifyAlbum implements SPAlbum {
 
     constructor(data: any)
     {
-        this.platform = 'spotify';
+        super('spotify');
         this.raw = data;
 
         this.url = data.external_urls.spotify;
@@ -126,9 +126,8 @@ class SpotifyAlbum implements SPAlbum {
     }
 }
 
-class SpotifyArtist implements SPArtist {
+class SpotifyArtist extends Base implements SPArtist {
 
-    readonly platform: string;
     readonly picture: string;
     readonly id: string | Number;
     readonly url: string;
@@ -138,7 +137,7 @@ class SpotifyArtist implements SPArtist {
 
     constructor(data: any)
     {
-        this.platform = 'spotify';
+        super('spotify');
         this.raw = data;
 
         this.id = data.id;
@@ -162,8 +161,8 @@ class SpotifyArtist implements SPArtist {
     }
 }
 
-class SpotifyPlaylist implements SPPlaylist {
-    readonly platform: string;
+class SpotifyPlaylist extends Base implements SPPlaylist {
+
     readonly id: string;
     readonly title: string;
     readonly description: string;
@@ -175,7 +174,7 @@ class SpotifyPlaylist implements SPPlaylist {
 
     constructor(data: any)
     {
-        this.platform = 'spotify';
+        super('spotify');
         this.raw = data;
 
         this.id = data.id;

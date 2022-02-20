@@ -1,12 +1,12 @@
 import { Deezer } from "@flazepe/deezer.js";
 import { DurationType } from "../../typings/base";
 import { DZAlbum, DZArtist, DZPlaylist, DZReleaseDate, DZSocials, DZTrack } from "../../typings/deezer";
+import { Base } from "../Base";
 const client = new Deezer();
 
-class DeezerTrack implements DZTrack {
+class DeezerTrack extends Base implements DZTrack {
 
     readonly picture: string;
-    readonly platform: string;
     readonly url: string;
     readonly id: string;
     readonly title: string;
@@ -15,7 +15,7 @@ class DeezerTrack implements DZTrack {
 
     constructor(data: any)
     {
-        this.platform = "deezer";
+        super('deezer');
         this.raw = data;
 
         this.id = data.SNG_ID;
@@ -75,9 +75,8 @@ class DeezerTrack implements DZTrack {
     }
 }
 
-class DeezerArtist implements DZArtist {
+class DeezerArtist extends Base implements DZArtist {
 
-    readonly platform: string;
     readonly id: string;
     readonly name: string;
     readonly url: string;
@@ -87,7 +86,7 @@ class DeezerArtist implements DZArtist {
 
     constructor(data: any)
     {
-        this.platform = "deezer";
+        super("deezer");
         this.raw = data;
 
         this.id = data.ART_ID;
@@ -119,9 +118,8 @@ class DeezerArtist implements DZArtist {
     } 
 }
 
-class DeezerAlbum implements DZAlbum {
+class DeezerAlbum extends Base implements DZAlbum {
 
-    readonly platform: string;
     readonly id: string;
     readonly title: string;
     readonly url: string;
@@ -132,10 +130,9 @@ class DeezerAlbum implements DZAlbum {
 
     constructor(data: any)
     {
-        this.platform = "deezer";
+        super("deezer");
         this.raw = data;
 
-        this.platform = "deezer";
         this.id = data.ABL_ID;
         this.title = data.ALB_TITLE;
         this.url = `https://www.deezer.com/us/album/${this.id}`
@@ -182,9 +179,8 @@ class DeezerAlbum implements DZAlbum {
     }
 }
 
-class DeezerPlaylist implements DZPlaylist {
+class DeezerPlaylist extends Base implements DZPlaylist {
 
-    readonly platform: string;
     readonly title: string;
     readonly size: Number;
     readonly id: string;
@@ -195,7 +191,7 @@ class DeezerPlaylist implements DZPlaylist {
 
     constructor(data: any)
     {   
-        this.platform = "deezer";
+        super("deezer");
         this.raw = data;
 
         this.id = data.PLAYLIST_ID;

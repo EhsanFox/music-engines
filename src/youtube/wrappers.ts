@@ -4,10 +4,10 @@ import { Artist, DurationType } from "../../typings/base";
 import { fetchYouTube, YTPlaylist, YTTrack, YTDLStreamOptions } from "../../typings/youtube";
 import { opus, FFmpeg } from "prism-media";
 import { Video } from "youtube-sr";
+import { Base } from "../Base";
 
-class YouTubeArtist implements Artist {
+class YouTubeArtist extends Base implements Artist {
 
-    readonly platform: string;
     readonly id: string;
     readonly name: string;
     readonly picture: string;
@@ -16,7 +16,7 @@ class YouTubeArtist implements Artist {
 
     constructor(data: any)
     {
-        this.platform = "youtube";
+        super("youtube");
         this.raw = data;
 
         this.id = data.id;
@@ -26,9 +26,8 @@ class YouTubeArtist implements Artist {
     }
 }
 
-class YouTubePlaylist implements YTPlaylist {
+class YouTubePlaylist extends Base implements YTPlaylist {
 
-    readonly platform: string;
     readonly publisher: Artist;
     readonly id: string;
     readonly title: string;
@@ -41,7 +40,7 @@ class YouTubePlaylist implements YTPlaylist {
 
     constructor(data: any)
     {
-        this.platform = "youtube";
+        super("youtube");
         this.raw = data;
 
         this.id = data.id;
@@ -66,9 +65,8 @@ class YouTubePlaylist implements YTPlaylist {
     }
 }
 
-class YouTubeTrack implements YTTrack {
+class YouTubeTrack extends Base implements YTTrack {
 
-    readonly platform: string;
     readonly id: string;
     readonly picture: string;
     readonly url: string;
@@ -80,7 +78,7 @@ class YouTubeTrack implements YTTrack {
 
     constructor(data: any)
     {
-        this.platform = "youtube";
+        super("youtube");
         this.raw = data;
 
         this.id = data.id;

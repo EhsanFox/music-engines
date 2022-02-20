@@ -2,11 +2,11 @@ import { IncomingMessage } from "http";
 import { Client as SCClient, Song, UserInfo, Playlist as SCCPlaylist } from "soundcloud-scraper";
 import { DurationType } from "../../typings/base";
 import { SCArtist, SCPlaylist, SCTrack } from "../../typings/soundcloud";
+import { Base } from "../Base";
 const client = new SCClient();
 
-class SoundCloudTrack implements SCTrack {
+class SoundCloudTrack extends Base implements SCTrack {
 
-    readonly platform: string;
     readonly title: string;
     readonly url: string;
     readonly id: string;
@@ -16,7 +16,7 @@ class SoundCloudTrack implements SCTrack {
 
     constructor(data: Song)
     {
-        this.platform = "soundcloud";
+        super("soundcloud");
         this.raw = data;
 
         this.id = data.id;
@@ -66,9 +66,8 @@ class SoundCloudTrack implements SCTrack {
     }
 }
 
-class SoundCloudArtist implements SCArtist {
+class SoundCloudArtist extends Base implements SCArtist {
 
-    readonly platform: string;
     readonly name: string;
     readonly url: string;
     readonly id: string | Number;
@@ -77,7 +76,7 @@ class SoundCloudArtist implements SCArtist {
 
     constructor(data: UserInfo)
     {
-        this.platform = "soundcloud";
+        super("soundcloud");
         this.raw = data;
         this.id = data.username;
         this.name = data.name;
@@ -103,9 +102,8 @@ class SoundCloudArtist implements SCArtist {
     }
 }
 
-class SoundCloudPlaylist implements SCPlaylist {
+class SoundCloudPlaylist extends Base implements SCPlaylist {
 
-    readonly platform: string;
     readonly title: string;
     readonly id: string | number;
     readonly url: string;
@@ -116,7 +114,7 @@ class SoundCloudPlaylist implements SCPlaylist {
 
     constructor(data: SCCPlaylist)
     {
-        this.platform = "soundcloud";
+        super("soundcloud");
         this.raw = data;
 
         this.id = data.id;
