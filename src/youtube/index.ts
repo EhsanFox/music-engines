@@ -174,3 +174,4 @@ class YouTube implements YTEngine {
 }
 
 export { YouTube };
+export * as YoutubeWrappers from "./wrappers";

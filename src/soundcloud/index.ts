@@ -90,3 +90,4 @@ class SoundCloud implements SCEngine {
 }
 
 export { SoundCloud };
+export * as SoundcloudWrappers from "./wrappers";

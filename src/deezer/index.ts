@@ -101,3 +101,4 @@ class Deezer implements DZEngine {
 }
 
 export { Deezer };
+export * as DeezerWrappers from "./wrappers";
