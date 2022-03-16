@@ -23,11 +23,11 @@ music-engine currently Supports **4** biggest platform that we all know all-in-o
 ### Installation
 - Using NPM
 
-`npm install music-engine`
+`npm install music-engines`
 
 - Using yarn
 
-`yarn add music-engine`
+`yarn add music-engines`
 
 ### Features
 - [x] Custom Data Wrapper
