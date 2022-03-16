@@ -82,5 +82,5 @@ class Spotify implements SPEngine {
     }
 }
 
-export { Spotify };
+export { Spotify, SpotifyValidator, SpotifyExtractor };
 export * as SpotifyWrappers from "./wrappers";

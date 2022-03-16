@@ -89,5 +89,5 @@ class SoundCloud implements SCEngine {
     }
 }
 
-export { SoundCloud };
+export { SoundCloud, SoundcloudValidator, SoundcloudExtractor };
 export * as SoundcloudWrappers from "./wrappers";
