@@ -1,6 +1,6 @@
 import parseSpotifyUri from "spotify-uri";
 import pkg, { ParsedSpotifyUri } from "spotify-uri";
-import { SPExtractorResult } from "../../typings/spotify";
+import { SPExtractorResult } from "../typings/spotify";
 const { formatURI, parse } = pkg;
 
 /**

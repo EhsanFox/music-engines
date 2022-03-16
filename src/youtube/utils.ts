@@ -1,5 +1,5 @@
 import { validateID, validateURL, getVideoID } from "ytdl-core";
-import { YTExtractorResult } from "../../typings/youtube";
+import { YTExtractorResult } from "../typings/youtube";
 import YouTube from "youtube-sr";
 
 function validator(input: string): boolean {

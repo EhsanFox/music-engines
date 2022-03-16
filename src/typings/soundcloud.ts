@@ -1,5 +1,5 @@
 import { IncomingMessage } from "http";
-import { SoundCloudArtist, SoundCloudPlaylist, SoundCloudTrack } from "../src/soundcloud/wrappers";
+import { SoundCloudArtist, SoundCloudPlaylist, SoundCloudTrack } from "../soundcloud/wrappers";
 import { Artist, Playlist, Track } from "./base";
 
 export interface SCExtractorResult {

@@ -1,5 +1,5 @@
-import { SPAlbum, SPArtist, SPEngine, SPExtractorResult, SPPlaylist, SPTrack } from "../../typings/spotify";
-import { test, YTTrack } from "../../typings/youtube";
+import { SPAlbum, SPArtist, SPEngine, SPExtractorResult, SPPlaylist, SPTrack } from "../typings/spotify";
+import { test, YTTrack } from "../typings/youtube";
 import { SpotifyExtractor, SpotifyValidator } from "./utils";
 import { YouTube } from "../youtube";
 import { getData } from "spotify-url-info";

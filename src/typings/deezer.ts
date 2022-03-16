@@ -1,4 +1,4 @@
-import { DeezerAlbum, DeezerArtist, DeezerPlaylist, DeezerTrack } from "../src/deezer/wrappers";
+import { DeezerAlbum, DeezerArtist, DeezerPlaylist, DeezerTrack } from "../deezer/wrappers";
 import { Artist, Playlist, Track } from "./base";
 
 export interface DZExtractorResult {

@@ -1,4 +1,4 @@
-import { ExtractedType, YTEngine, YTExtractorResult, YTOptions } from "../../typings/youtube";
+import { ExtractedType, YTEngine, YTExtractorResult, YTOptions } from "../typings/youtube";
 import { YouTubeExtractor, YouTubeValidator } from "./utils";
 import { YouTube as YouTubeSR, Video as YouTubeSRVideo, Channel as YouTubeSRChannel, Playlist as YouTubeSRPlaylist } from "youtube-sr";
 import { YouTubeArtist, YouTubePlaylist, YouTubeTrack } from "./wrappers";

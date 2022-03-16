@@ -1,7 +1,7 @@
 import { IncomingMessage } from "http";
 import { Client as SCClient, Song, UserInfo, Playlist as SCCPlaylist } from "soundcloud-scraper";
-import { DurationType } from "../../typings/base";
-import { SCArtist, SCPlaylist, SCTrack } from "../../typings/soundcloud";
+import { DurationType } from "../typings/base";
+import { SCArtist, SCPlaylist, SCTrack } from "../typings/soundcloud";
 import { Base } from "../Base";
 const client = new SCClient();
 

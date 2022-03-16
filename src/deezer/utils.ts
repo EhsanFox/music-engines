@@ -1,4 +1,4 @@
-import { DZExtractorResult } from "../../typings/deezer";
+import { DZExtractorResult } from "../typings/deezer";
 
 function extractor(input: string): DZExtractorResult {
     const myRegexp = new RegExp("http[s]*\:[\/]{2}[^.]+[.]deezer.com\/us\/([a-zA-Z-_]+)\/([0-9]+)", "gm");

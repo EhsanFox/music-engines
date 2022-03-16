@@ -1,6 +1,6 @@
-import { SPAlbum, SPArtist, SPPlaylist, SPTrack } from "../../typings/spotify";
+import { SPAlbum, SPArtist, SPPlaylist, SPTrack } from "../typings/spotify";
 import { getData } from "spotify-url-info";
-import { DurationType } from "../../typings/base";
+import { DurationType } from "../typings/base";
 import { opus, FFmpeg } from "prism-media";
 import { downloadOptions } from "ytdl-core";
 import DisYT from "discord-ytdl-core";

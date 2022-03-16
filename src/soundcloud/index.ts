@@ -1,4 +1,4 @@
-import { SCArtist, SCEngine, SCExtractorResult, SCPlaylist, SCTrack } from "../../typings/soundcloud";
+import { SCArtist, SCEngine, SCExtractorResult, SCPlaylist, SCTrack } from "../typings/soundcloud";
 import { SoundcloudExtractor, SoundcloudValidator } from "./utils";
 import { SoundCloudTrack, SoundCloudPlaylist, SoundCloudArtist } from "./wrappers"
 import { Client as SCClient } from "soundcloud-scraper";

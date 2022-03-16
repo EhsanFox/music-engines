@@ -1,7 +1,7 @@
 import { downloadOptions } from "ytdl-core";
 import DisYT from "discord-ytdl-core";
-import { Artist, DurationType } from "../../typings/base";
-import { fetchYouTube, YTPlaylist, YTTrack, YTDLStreamOptions } from "../../typings/youtube";
+import { Artist, DurationType } from "../typings/base";
+import { fetchYouTube, YTPlaylist, YTTrack, YTDLStreamOptions } from "../typings/youtube";
 import { opus, FFmpeg } from "prism-media";
 import { Video } from "youtube-sr";
 import { Base } from "../Base";

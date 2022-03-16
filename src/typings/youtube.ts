@@ -3,7 +3,7 @@ import { downloadOptions } from "ytdl-core";
 import { Playlist, Track, Artist } from "./base";
 import { opus as Opus, FFmpeg } from "prism-media";
 import { YouTube as YouTubeSR, Video as YouTubeSRVideo, Channel as YouTubeSRChannel, Playlist as YouTubeSRPlaylist } from "youtube-sr";
-import { YouTubeArtist, YouTubePlaylist, YouTubeTrack } from "../src/youtube/wrappers";
+import { YouTubeArtist, YouTubePlaylist, YouTubeTrack } from "../youtube/wrappers";
 
 export interface YTTrack extends Track {
 

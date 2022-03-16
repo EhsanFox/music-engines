@@ -1,5 +1,5 @@
 import { Util as SoundClouldUtils } from "soundcloud-scraper";
-import { SCExtractorResult } from "../../typings/soundcloud";
+import { SCExtractorResult } from "../typings/soundcloud";
 
 const validator = (url: string): boolean => SoundClouldUtils.validateURL(url, 'all');
 

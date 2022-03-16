@@ -1,6 +1,6 @@
 import { Deezer } from "@flazepe/deezer.js";
-import { DurationType } from "../../typings/base";
-import { DZAlbum, DZArtist, DZPlaylist, DZReleaseDate, DZSocials, DZTrack } from "../../typings/deezer";
+import { DurationType } from "../typings/base";
+import { DZAlbum, DZArtist, DZPlaylist, DZReleaseDate, DZSocials, DZTrack } from "../typings/deezer";
 import { Base } from "../Base";
 const client = new Deezer();
 
