@@ -29,19 +29,15 @@ class DeezerTrack extends Base implements DZTrack {
         return client.getAndDecryptTrack(this.raw);
     }
 
-    artists(): Promise<DeezerArtist[]> {
-        return new Promise(async (resolve, reject) => {
-            const output: DeezerArtist[] = [];
-            for await (const artist of this.raw.ARTISTS)
-            {
-                client.get(artist.ART_ID, 'artist').then(d => {
-                    if(d)
-                        output.push(new DeezerArtist(d.info));
-                })
-                .catch(reject);
-            }
-            resolve(output);
-        })
+    public async artists(): Promise<DeezerArtist[]> {
+        const output: DeezerArtist[] = [];
+        for await (const artist of this.raw.ARTISTS)
+        {
+            const d = await client.get(artist.ART_ID, 'artist')
+            if(d)
+                output.push(new DeezerArtist(d.info));
+        }
+        return output;
     }
 
     album(): Promise<DeezerAlbum> {
@@ -145,19 +141,16 @@ class DeezerAlbum extends Base implements DZAlbum {
         this.picture = `https://e-cdn-images.dzcdn.net/images/cover/${data.ALB_PICTURE}/264x264-000000-80-0-0.jpg`;
     }
 
-    artists(): Promise<DeezerArtist[]> {
-        return new Promise(async (resolve, reject) => {
-            const output: DeezerArtist[] = [];
-            for await (const artist of this.raw.ARTISTS)
-            {
-                client.get(artist.ART_ID, 'artist').then(async d => {
-                    if(d)
-                        output.push(new DeezerArtist(d.info));
-                })
-                .catch(reject);
-            }
-            resolve(output);
-        });
+    public async artists(): Promise<DeezerArtist[]> {
+        const output: DeezerArtist[] = [];
+        for await (const artist of this.raw.ARTISTS)
+        {
+            const d = await client.get(artist.ART_ID, 'artist')
+            if(d)
+                output.push(new DeezerArtist(d.info));
+            
+        }
+        return output;
     }
 
     tracks(): Promise<DeezerTrack[]> {
@@ -202,22 +195,19 @@ class DeezerPlaylist extends Base implements DZPlaylist {
         this.url = `https://www.deezer.com/us/playlist/${this.id}`;
     }
 
-    publisher(): Promise<DeezerArtist[] | any[]> {
-        return new Promise(async (resolve, reject) => {
-            if(!this.raw.HAS_ARTIST_LINKED)
-                resolve([]);
+    public async publisher(): Promise<DeezerArtist[] | any[]> {
+        if(!this.raw.HAS_ARTIST_LINKED)
+            return [];
 
-            const output: DeezerArtist[] = [];
-            for await (const artist of this.raw.PLAYLIST_LINKED_ARTIST)
-            {
-                client.get(artist.ART_ID, 'artist').then(d => {
-                    if(d)
-                        output.push(new DeezerArtist(d.info));
-                })
-                .catch(reject);
-            }
-            resolve(output);
-        });
+        const output: DeezerArtist[] = [];
+        for await (const artist of this.raw.PLAYLIST_LINKED_ARTIST)
+        {
+            const d = await client.get(artist.ART_ID, 'artist')
+            if(d)
+                output.push(new DeezerArtist(d.info));
+            
+        }
+        return output;
     }
 
     tracks(): Promise<DeezerTrack[]> {

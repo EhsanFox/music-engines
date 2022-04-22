@@ -47,22 +47,13 @@ class SoundCloudTrack extends Base implements SCTrack {
         }
     }
 
-    artist(): Promise<SoundCloudArtist> {
-        return new Promise((resolve, reject) => {
-            client.getUser(this.raw.author.username)
-            .then(data => {
-                resolve(new SoundCloudArtist(data));
-            })
-            .catch(reject);
-        });
+    public async artist(): Promise<SoundCloudArtist> {
+        const data = await client.getUser(this.raw.author.username)
+        return new SoundCloudArtist(data);
     }
 
-    stream(): Promise<IncomingMessage> {
-        return new Promise((resolve, reject) => {
-            this.raw.downloadProgressive()
-            .then(resolve)
-            .catch(reject);
-        });
+    async stream(): Promise<IncomingMessage> {
+        return await this.raw.downloadProgressive()
     }
 }
 
@@ -84,21 +75,14 @@ class SoundCloudArtist extends Base implements SCArtist {
         this.url = data.profile;
     }
 
-    tracks(): Promise<SoundCloudTrack[]> {
-        return new Promise(async (resolve, reject) => {
-            const output: SoundCloudTrack[] = [];
-
-            for await (const track of this.raw.tracks)
-            {
-                client.getSongInfo(track.url)
-                .then(trackData => {
-                    output.push(new SoundCloudTrack(trackData));
-                })
-                .catch(reject);
-            }
-
-            resolve(output);
-        });
+    public async tracks(): Promise<SoundCloudTrack[]> {
+        const output: SoundCloudTrack[] = [];
+        for await (const track of this.raw.tracks)
+        {
+            const trackData = await client.getSongInfo(track.url)
+            output.push(new SoundCloudTrack(trackData));
+        }
+        return output;
     }
 }
 
@@ -125,26 +109,19 @@ class SoundCloudPlaylist extends Base implements SCPlaylist {
         this.size = data.trackCount;
     }
 
-    tracks(): Promise<SoundCloudTrack[]> {
-        return new Promise(async (resolve, reject) => {
-            const output: SoundCloudTrack[] = [];
-            for await (const track of this.raw.tracks)
-            {
-                output.push(new SoundCloudTrack(track));
-            }
+    public async tracks(): Promise<SoundCloudTrack[]> {
+        const output: SoundCloudTrack[] = [];
+        for await (const track of this.raw.tracks)
+        {
+            output.push(new SoundCloudTrack(track));
+        }
 
-            resolve(output);
-        })
+        return output;
     }
 
-    publisher(): Promise<SoundCloudArtist> {
-        return new Promise((resolve, reject) => {
-            client.getUser(this.raw.author.username)    
-            .then(x => {
-                resolve(new SoundCloudArtist(x));
-            })
-            .catch(reject);
-        });
+    public async publisher(): Promise<SoundCloudArtist> { 
+        const x = await client.getUser(this.raw.author.username)        
+        return new SoundCloudArtist(x);
     }
 }
 

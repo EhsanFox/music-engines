@@ -1,11 +1,9 @@
-import { SPAlbum, SPArtist, SPEngine, SPExtractorResult, SPPlaylist, SPTrack } from "../typings/spotify";
-import { test, YTTrack } from "../typings/youtube";
+import { SPEngine, SPExtractorResult } from "../typings/spotify";
 import { SpotifyExtractor, SpotifyValidator } from "./utils";
 import { YouTube } from "../youtube";
 import { getData } from "spotify-url-info";
 import { SpotifyAlbum, SpotifyArtist, SpotifyPlaylist, SpotifyTrack } from "./wrappers";
-import { YouTube as YouTubeSR, Video as YouTubeSRVideo, Channel as YouTubeSRChannel, Playlist as YouTubeSRPlaylist } from "youtube-sr";
-import { YouTubeArtist, YouTubePlaylist, YouTubeTrack } from "../youtube/wrappers";
+import { YouTubeTrack } from "../youtube/wrappers";
 
 class Spotify implements SPEngine {
 
@@ -20,8 +18,8 @@ class Spotify implements SPEngine {
 
     use(input: string): Promise<SpotifyTrack | SpotifyAlbum | SpotifyPlaylist | SpotifyArtist | YouTubeTrack | YouTubeTrack[]> {
         return new Promise((resolve, reject) => {
-            let validated: boolean = this.validator(input),
-                extracted: SPExtractorResult;
+            const validated: boolean = this.validator(input);
+            let extracted: SPExtractorResult;
 
             if(validated)
             {

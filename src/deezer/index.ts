@@ -1,5 +1,5 @@
 import { Deezer as MainDeezer } from "@flazepe/deezer.js";
-import { DZAlbum, DZArtist, DZEngine, DZExtractorResult, DZPlaylist, DZTrack } from "../typings/deezer";
+import { DZEngine, DZExtractorResult } from "../typings/deezer";
 import { DeezerExtractor, DeezerValidator } from "./utils";
 import { DeezerAlbum, DeezerArtist, DeezerPlaylist, DeezerTrack } from "./wrappers";
 

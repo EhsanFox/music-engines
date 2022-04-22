@@ -94,8 +94,8 @@ class SpotifyAlbum extends Base implements SPAlbum {
 
     }
 
-    async artists(): Promise<SpotifyArtist | SpotifyArtist[]> {
-          
+    public async artists(): Promise<SpotifyArtist | SpotifyArtist[]> {
+
         const output: SpotifyArtist[] = [];
                 
         for await (const art of this.raw.artists)
@@ -107,21 +107,15 @@ class SpotifyAlbum extends Base implements SPAlbum {
 
     }
 
-    tracks(): Promise<SpotifyTrack | SpotifyTrack[]> {
-        return new Promise(async (resolve, reject) => {
-            getData(this.raw.external_urls.spotify)
-            .then(async (albumData: any) => {
-                const output: SpotifyTrack[] = [];
+    public async tracks(): Promise<SpotifyTrack | SpotifyTrack[]> {
+        const albumData: any = await getData(this.raw.external_urls.spotify)
+        const output: SpotifyTrack[] = [];
+        for await (const item of albumData.tracks.items)
+        {
+            output.push(new SpotifyTrack(item));
+        }
 
-                for await (const item of albumData.tracks.items)
-                {
-                    output.push(new SpotifyTrack(item));
-                }
-
-                resolve(output);
-            })
-            .catch(reject);
-        });
+        return output;
     }
 }
 
@@ -146,17 +140,14 @@ class SpotifyArtist extends Base implements SPArtist {
         this.picture = data.images[0];
     }
 
-    public tracks(): Promise<SpotifyTrack[]> {
-        return new Promise(async (resolve, reject) => {
-            
-            const output: SpotifyTrack[] = [];
-            for await (const track of this.raw.tracks)
-            {
-                output.push(new SpotifyTrack(track));
-            }
+    public async tracks(): Promise<SpotifyTrack[]> {   
+        const output: SpotifyTrack[] = [];
+        for await (const track of this.raw.tracks)
+        {
+            output.push(new SpotifyTrack(track));
+        }
 
-            resolve(output);
-        });
+        return output;
     }
 }
 
@@ -186,17 +177,14 @@ class SpotifyPlaylist extends Base implements SPPlaylist {
 
     }
 
-    tracks(): Promise<SpotifyTrack[]> {
-        return new Promise(async (resolve, reject) => {
-            const output = [];
+    public async tracks(): Promise<SpotifyTrack[]> {
+        const output = [];
+        for await (const item of this.raw.tracks.items)
+        {
+            output.push(new SpotifyTrack(item));
+        }
 
-            for await (const item of this.raw.tracks.items)
-            {
-                output.push(new SpotifyTrack(item));
-            }
-
-            resolve(output);
-        })
+        return output;
     }
 }
 
