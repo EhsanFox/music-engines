@@ -1,6 +1,6 @@
 {
   "name": "music-engines",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Get Your favorite Music from anywhere you like.",
   "main": "dist/src/index.js",
   "typings": "dist/index.d.ts",
