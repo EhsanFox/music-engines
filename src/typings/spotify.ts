@@ -1,7 +1,6 @@
 import { Artist, Playlist, Track } from "./base";
 import { downloadOptions } from "ytdl-core";
 import { opus as Opus, FFmpeg } from "prism-media";
-import { YTTrack } from "./youtube";
 import { SpotifyAlbum, SpotifyArtist, SpotifyPlaylist, SpotifyTrack } from "../spotify/wrappers";
 import { YouTubeTrack } from "../youtube/wrappers";
 

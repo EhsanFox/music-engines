@@ -7,7 +7,7 @@ const { formatURI, parse } = pkg;
  * @param {String} url Spotify URL/ID
  * @returns {ParsedSpotifyUri} Parsed Object
  */
-function extractor(url: string): SPExtractorResult { return parse(url) as SPExtractorResult };
+function extractor(url: string): SPExtractorResult { return parse(url) as SPExtractorResult }
 
 /**
  * @param {String} input URL to check if it's Valid

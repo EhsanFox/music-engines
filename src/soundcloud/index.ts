@@ -54,7 +54,7 @@ class SoundCloud implements SCEngine {
                 this.client.search(input, type)
                 .then(async data => {
 
-                    let output: any[] = [];
+                    const output: any[] = [];
                     for await (const item of data) 
                     {
                         try {
@@ -78,7 +78,6 @@ class SoundCloud implements SCEngine {
                             reject(error);
                         }
                     }
-                    console.log('For ended, Tracks: ', output)
                     resolve(output);
 
                 })

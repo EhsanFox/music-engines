@@ -18,7 +18,7 @@ class Deezer implements DZEngine {
     use(input: string, type: "track" | "album" | "artist" | "playlist" = "track"): Promise<DeezerTrack | DeezerAlbum | DeezerArtist | DeezerPlaylist | (DeezerTrack | DeezerAlbum | DeezerArtist | DeezerPlaylist)[]> 
     {
         return new Promise((resolve, reject) => {
-            let isValid = this.validator(input),
+            const isValid = this.validator(input),
                 inputType = (isValid) ? "url" : (new RegExp(/^\d+$/g).test(input)) ? 'id' : 'search';
 
             if(inputType == "url" || inputType == "id")
@@ -29,7 +29,7 @@ class Deezer implements DZEngine {
                     {
                         if(data.type == 'track')
                         {
-                            let output = [];
+                            const output = [];
                             for await (const x of data.tracks)
                             {
                                 output.push(new DeezerTrack(x));
@@ -60,7 +60,7 @@ class Deezer implements DZEngine {
                     //Artist Wrapper
                     if(type == 'artist')
                     {
-                        let tempout = [];
+                        const tempout = [];
                         for await (const x of data)
                             tempout.push(new DeezerArtist(x));
 
@@ -69,7 +69,7 @@ class Deezer implements DZEngine {
                     //Album Wrapper
                     else if(type == 'album')
                     {
-                        let tempout = [];
+                        const tempout = [];
                         for await (const x of data)
                             tempout.push(new DeezerAlbum(x));
                             
@@ -78,7 +78,7 @@ class Deezer implements DZEngine {
                     //Playlist Wrapper
                     else if(type == 'playlist')
                     {
-                        let tempout = [];
+                        const tempout = [];
                         for await (const x of data)
                             tempout.push(new DeezerPlaylist(x));
                             
@@ -87,7 +87,7 @@ class Deezer implements DZEngine {
                     //Track Wrapper
                     else if(type == "track")
                     {
-                        let tempout = [];
+                        const tempout = [];
                         for await (const x of data)
                             tempout.push(new DeezerTrack(x));
                             

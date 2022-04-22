@@ -26,16 +26,16 @@ class SoundCloudTrack extends Base implements SCTrack {
         this.duration = this._DurationFormater(data.duration);
     }
 
-    _DurationFormater(data: number, isMs: boolean = true): DurationType {
+    _DurationFormater(data: number, isMs = true): DurationType {
         if(isMs)
         {
-            var ms = data % 1000;
+            const ms = data % 1000;
             data = (data - ms) / 1000;
         }
-        var secs = data % 60;
+        const secs = data % 60;
         data = (data - secs) / 60;
-        var mins = data % 60;
-        var hrs = (data - mins) / 60;
+        const mins = data % 60;
+        const hrs = (data - mins) / 60;
     
         return {
             full: data,
@@ -70,7 +70,7 @@ class SoundCloudArtist extends Base implements SCArtist {
 
     readonly name: string;
     readonly url: string;
-    readonly id: string | Number;
+    readonly id: string | number;
     readonly picture: string;
     private raw: UserInfo;
 
@@ -86,7 +86,7 @@ class SoundCloudArtist extends Base implements SCArtist {
 
     tracks(): Promise<SoundCloudTrack[]> {
         return new Promise(async (resolve, reject) => {
-            let output: SoundCloudTrack[] = [];
+            const output: SoundCloudTrack[] = [];
 
             for await (const track of this.raw.tracks)
             {
@@ -108,7 +108,7 @@ class SoundCloudPlaylist extends Base implements SCPlaylist {
     readonly id: string | number;
     readonly url: string;
     readonly picture: string;
-    readonly size: Number;
+    readonly size: number;
     readonly description: string;
     private raw: SCCPlaylist;
 

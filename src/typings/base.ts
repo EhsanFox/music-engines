@@ -1,36 +1,34 @@
-import { Readable } from "stream";
-
 export interface DurationType {
     /**
      * Full ms/seconds
      */
-    full: Number;
+    full: number;
 
     /**
      * MiliSeconds
      */
-    ms: Number;
+    ms: number;
 
     /**
      * Seconds
      */
-    sec: Number;
+    sec: number;
 
     /**
      * Minutes
      */
-    min: Number;
+    min: number;
 
     /**
      * Hours
      */
-    hour: Number;
+    hour: number;
 
     /**
      * Formated Duration/Time
      */
     format: string;
-};
+}
 
 export interface Artist {
   
@@ -48,7 +46,7 @@ export interface Artist {
     /**
      * Artist ID
      */
-    id: Number | string;
+    id: number | string;
 
     /**
      * Artist URL
@@ -172,7 +170,7 @@ export interface Playlist {
     /**
       * Playlist Size
       */
-    size: Number;
+    size: number;
 
     /* OPTIONAL & CHANGEABLE PROPS */
 

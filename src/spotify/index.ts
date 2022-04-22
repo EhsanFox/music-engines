@@ -66,7 +66,7 @@ class Spotify implements SPEngine {
                     type: 'video'
                 })
                 .then(async res => {
-                    let resolveOutput: YouTubeTrack[] = [];
+                    const resolveOutput: YouTubeTrack[] = [];
 
                     for await (const item of res)
                     {

@@ -3,7 +3,6 @@ import { getData } from "spotify-url-info";
 import { DurationType } from "../typings/base";
 import { opus, FFmpeg } from "prism-media";
 import { downloadOptions } from "ytdl-core";
-import DisYT from "discord-ytdl-core";
 import { YouTube } from "../youtube"
 import { YouTubeTrack } from "../youtube/wrappers";
 import { Base } from "../Base";
@@ -32,13 +31,13 @@ class SpotifyTrack extends Base implements SPTrack {
     _DurationFormater(data: number, isMs: boolean): DurationType {
         if(isMs)
         {
-            var ms = data % 1000;
+            const ms = data % 1000;
             data = (data - ms) / 1000;
         }
-        var secs = data % 60;
+        const secs = data % 60;
         data = (data - secs) / 60;
-        var mins = data % 60;
-        var hrs = (data - mins) / 60;
+        const mins = data % 60;
+        const hrs = (data - mins) / 60;
     
         return {
             full: data,
@@ -53,7 +52,7 @@ class SpotifyTrack extends Base implements SPTrack {
     stream(ytdlParams?: downloadOptions): Promise<opus.Encoder | FFmpeg> {
         return new Promise((resolve, reject) => {
 
-            let searchQuery = `${this.raw.artists[0].name} - ${this.raw.name}`;
+            const searchQuery = `${this.raw.artists[0].name} - ${this.raw.name}`;
             const YouTubeInstance = new YouTube();
             YouTubeInstance.use(searchQuery, {
                 limit: 1,
@@ -95,24 +94,24 @@ class SpotifyAlbum extends Base implements SPAlbum {
 
     }
 
-    artists(): Promise<SpotifyArtist | SpotifyArtist[]> {
-        return new Promise(async (resolve, reject) => {
-            let output: SpotifyArtist[] = [];
+    async artists(): Promise<SpotifyArtist | SpotifyArtist[]> {
+          
+        const output: SpotifyArtist[] = [];
                 
-            for await (const art of this.raw.artists)
-            {
-                output.push(new SpotifyArtist(art));
-            }
+        for await (const art of this.raw.artists)
+        {
+            output.push(new SpotifyArtist(art));
+        }
 
-            resolve(output);
-        })
+        return output;
+
     }
 
     tracks(): Promise<SpotifyTrack | SpotifyTrack[]> {
         return new Promise(async (resolve, reject) => {
             getData(this.raw.external_urls.spotify)
             .then(async (albumData: any) => {
-                let output: SpotifyTrack[] = [];
+                const output: SpotifyTrack[] = [];
 
                 for await (const item of albumData.tracks.items)
                 {
@@ -129,7 +128,7 @@ class SpotifyAlbum extends Base implements SPAlbum {
 class SpotifyArtist extends Base implements SPArtist {
 
     readonly picture: string;
-    readonly id: string | Number;
+    readonly id: string | number;
     readonly url: string;
     readonly name: string;
     readonly socials?: any;
@@ -150,7 +149,7 @@ class SpotifyArtist extends Base implements SPArtist {
     public tracks(): Promise<SpotifyTrack[]> {
         return new Promise(async (resolve, reject) => {
             
-            let output: SpotifyTrack[] = [];
+            const output: SpotifyTrack[] = [];
             for await (const track of this.raw.tracks)
             {
                 output.push(new SpotifyTrack(track));
@@ -166,7 +165,7 @@ class SpotifyPlaylist extends Base implements SPPlaylist {
     readonly id: string;
     readonly title: string;
     readonly description: string;
-    readonly size: Number;
+    readonly size: number;
     readonly url: string;
     readonly picture: string;
     readonly publisher?: any;
@@ -189,7 +188,7 @@ class SpotifyPlaylist extends Base implements SPPlaylist {
 
     tracks(): Promise<SpotifyTrack[]> {
         return new Promise(async (resolve, reject) => {
-            let output = [];
+            const output = [];
 
             for await (const item of this.raw.tracks.items)
             {

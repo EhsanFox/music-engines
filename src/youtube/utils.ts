@@ -10,7 +10,7 @@ function validator(input: string): boolean {
 }
 
 function extractor(url: string): YTExtractorResult {
-    let res: YTExtractorResult = {
+    const res: YTExtractorResult = {
         url: (validateURL(url)) ? url : `https://www.youtube.com/watch?v=${url}`,
         id: (validateURL(url)) ? getVideoID(url) : url,
         type: 'video'
