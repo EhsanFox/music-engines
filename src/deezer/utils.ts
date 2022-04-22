@@ -1,6 +1,7 @@
 import { DZExtractorResult } from "../typings/deezer";
 
 function extractor(input: string): DZExtractorResult {
+    // eslint-disable-next-line
     const myRegexp = new RegExp("http[s]*\:[\/]{2}[^.]+[.]deezer.com\/us\/([a-zA-Z-_]+)\/([0-9]+)", "gm");
     const match = myRegexp.exec(input);
     if(!match) return { type: 'unknown', id: 'unknwon' };
@@ -13,6 +14,7 @@ function extractor(input: string): DZExtractorResult {
 }
 
 function validator(url: string): boolean {
+    // eslint-disable-next-line
     const pattern = /http[s]*\:[\/]{2}[^.]+[.]deezer.com\/us\/([a-zA-Z-_]+)\/([0-9]+)/;
     return pattern.test(url);
 }

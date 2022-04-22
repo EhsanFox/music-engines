@@ -1,4 +1,4 @@
-import { SCArtist, SCEngine, SCExtractorResult, SCPlaylist, SCTrack } from "../typings/soundcloud";
+import { SCEngine, SCExtractorResult } from "../typings/soundcloud";
 import { SoundcloudExtractor, SoundcloudValidator } from "./utils";
 import { SoundCloudTrack, SoundCloudPlaylist, SoundCloudArtist } from "./wrappers"
 import { Client as SCClient } from "soundcloud-scraper";
@@ -54,7 +54,7 @@ class SoundCloud implements SCEngine {
                 this.client.search(input, type)
                 .then(async data => {
 
-                    let output: any[] = [];
+                    const output: any[] = [];
                     for await (const item of data) 
                     {
                         try {
@@ -78,7 +78,6 @@ class SoundCloud implements SCEngine {
                             reject(error);
                         }
                     }
-                    console.log('For ended, Tracks: ', output)
                     resolve(output);
 
                 })

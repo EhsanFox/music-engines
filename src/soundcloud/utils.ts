@@ -4,7 +4,7 @@ import { SCExtractorResult } from "../typings/soundcloud";
 const validator = (url: string): boolean => SoundClouldUtils.validateURL(url, 'all');
 
 function extractor(url: string): SCExtractorResult {
-    let result: SCExtractorResult = {
+    const result: SCExtractorResult = {
         url,
         type: 'unknown',
     }

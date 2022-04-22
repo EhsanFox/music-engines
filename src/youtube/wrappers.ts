@@ -1,9 +1,8 @@
 import { downloadOptions } from "ytdl-core";
 import DisYT from "discord-ytdl-core";
 import { Artist, DurationType } from "../typings/base";
-import { fetchYouTube, YTPlaylist, YTTrack, YTDLStreamOptions } from "../typings/youtube";
+import { YTPlaylist, YTTrack, YTDLStreamOptions } from "../typings/youtube";
 import { opus, FFmpeg } from "prism-media";
-import { Video } from "youtube-sr";
 import { Base } from "../Base";
 
 class YouTubeArtist extends Base implements Artist {
@@ -34,7 +33,7 @@ class YouTubePlaylist extends Base implements YTPlaylist {
     readonly description: string;
     readonly url: string;
     readonly picture: string;
-    readonly size: Number;
+    readonly size: number;
     public tracks: () => Promise<YouTubeTrack[]>;
     private raw: any;
 
@@ -51,16 +50,16 @@ class YouTubePlaylist extends Base implements YTPlaylist {
         this.publisher = new YouTubeArtist(data.channel);
         this.description = "No description.";
 
-        this.tracks = (): Promise<YouTubeTrack[]> => {
-            return new Promise(async (resolve, reject) => {
-                let output: YouTubeTrack[] = [];
-                for await (const item of this.raw.videos)
-                {
-                    output.push(new YouTubeTrack(item));
-                }
+        this.tracks = async (): Promise<YouTubeTrack[]> => {
+            
+            const output: YouTubeTrack[] = [];
+            for await (const item of this.raw.videos)
+            {
+                output.push(new YouTubeTrack(item));
+            }
 
-                resolve(output);
-            });
+            return output;
+
         }
     }
 }
@@ -86,17 +85,17 @@ class YouTubeTrack extends Base implements YTTrack {
         this.picture = data.thumbnail.url;
         this.url = data.url;
 
-        this._DurationFormater = (data: number, isMs: boolean = true) =>
+        this._DurationFormater = (data: number, isMs = true) =>
         {
             if(isMs)
             {
-                var ms = data % 1000;
+                const ms = data % 1000;
                 data = (data - ms) / 1000;
             }
-            var secs = data % 60;
+            const secs = data % 60;
             data = (data - secs) / 60;
-            var mins = data % 60;
-            var hrs = (data - mins) / 60;
+            const mins = data % 60;
+            const hrs = (data - mins) / 60;
     
             return {
                 full: data,

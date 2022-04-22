@@ -36,7 +36,7 @@ class YouTube implements YTEngine {
 
                 else if(options.format)
                 {
-                    let output: YouTubeTrack[] = [];
+                    const output: YouTubeTrack[] = [];
                     for await (const item of searchResult)
                     {  
                         output.push(new YouTubeTrack(item));
@@ -62,7 +62,7 @@ class YouTube implements YTEngine {
 
                     else if(options.format)
                     {
-                        let output = [];
+                        const output = [];
                         for await (const item of searchResult)
                         {
                             if(item instanceof YouTubeSRVideo)
@@ -93,7 +93,7 @@ class YouTube implements YTEngine {
 
                 else if(options.format)
                 {
-                    let output: YouTubePlaylist[] = [];
+                    const output: YouTubePlaylist[] = [];
                     for await (const item of searchResult)
                     {
                         output.push(new YouTubePlaylist(item))
@@ -119,7 +119,7 @@ class YouTube implements YTEngine {
 
                 else if(options.format)
                 {
-                    let output: YouTubeArtist[] = [];
+                    const output: YouTubeArtist[] = [];
                     for await (const item of searchResult)
                     {
                         output.push(new YouTubeArtist(item))
