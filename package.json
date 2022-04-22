@@ -1,6 +1,6 @@
 {
   "name": "music-engines",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Get Your favorite Music from anywhere you like.",
   "main": "dist/src/index.js",
   "files": [
@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/EhsanFox/music-engines#readme",
   "engines": {
-    "node": ">=14.0.0",
+    "node": ">=14.9.1",
     "npm": ">=7.0.0"
   },
   "scripts": {

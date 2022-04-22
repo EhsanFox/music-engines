@@ -54,11 +54,8 @@ const myEngine = new YouTube();
 myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })
 .then(resultArray => {
     const track = resultArray[0];
-    track.stream()
-    .then(audioBuffer => {
-        audioBuffer.pipe(fs.createWritestream("music.mp3"))
-    })
-    .catch(console.error)
+    const audioBuffer = track.stream()
+    audioBuffer.pipe(fs.createWritestream("music.mp3"))
 })
 .catch(console.error)
 ```
@@ -73,15 +70,12 @@ myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })
     const track = resultArray[0];
 
     // Disabling chunking is recommended in Discord bots
-    track.stream({ filter: 'audioonly', dlChunkSize: 0 })
-    .then(async audioBuffer => {
-        // Discord.js Stuff....
-        const connection = await voiceChannel.join();
-        const dipatcher = connection.play(audioBuffer)
+    const audioBuffer = track.stream({ filter: 'audioonly', dlChunkSize: 0 })
+    // Discord.js Stuff....
+    const connection = await voiceChannel.join();
+    const dipatcher = connection.play(audioBuffer)
         
-        // Enjoy the Music
-    })
-    .catch(console.error);
+    // Enjoy the Music
 })
 .catch(console.error)
 ```
