@@ -20,7 +20,8 @@
   },
   "scripts": {
     "build": "cd src && tsc --project ../tsconfig.json",
-    "lint": "eslint src --ext .ts --fix",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write src/**/*.{ts,js,json,yaml,yml}",
     "build-docs": "typedoc --tsconfig ./tsconfig.json",
     "test-yt": "ts-node test/youtube.ts",
