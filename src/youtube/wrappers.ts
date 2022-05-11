@@ -1,9 +1,8 @@
-import { downloadOptions } from "ytdl-core";
-import DisYT from "discord-ytdl-core";
+import ytdl, { downloadOptions } from "ytdl-core";
 import { Artist, DurationType } from "../typings/base";
-import { YTPlaylist, YTTrack, YTDLStreamOptions } from "../typings/youtube";
-import { opus, FFmpeg } from "prism-media";
+import { YTPlaylist, YTTrack } from "../typings/youtube";
 import { Base } from "../Base";
+import internal from "stream";
 
 class YouTubeArtist extends Base implements Artist {
 
@@ -72,7 +71,7 @@ class YouTubeTrack extends Base implements YTTrack {
     readonly title: string;
     readonly duration: DurationType;
     public _DurationFormater: (data: number, isMs: boolean) => DurationType;
-    public stream: (ytdlParams?: downloadOptions) => opus.Encoder | FFmpeg;
+    public stream: (ytdlParams?: downloadOptions) => internal.Readable;
     private raw: any;
 
     constructor(data: any)
@@ -109,10 +108,11 @@ class YouTubeTrack extends Base implements YTTrack {
 
         this.duration = this._DurationFormater(data.duration, true);
 
-        this.stream = (ytdlParams?: YTDLStreamOptions) => {
-            return DisYT(this.url, ytdlParams ?? {
+        this.stream = (ytdlParams?: ytdl.downloadOptions) => {
+            return ytdl(this.url, ytdlParams ?? {
                 filter: 'audioonly',
                 quality: 'highestaudio',
+                dlChunkSize: 0,
                 highWaterMark: 1 << 24
             } );
         }
