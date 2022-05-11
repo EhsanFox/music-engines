@@ -1,8 +1,8 @@
 import { downloadOptions } from "ytdl-core";
 import { Playlist, Track, Artist } from "./base";
-import { opus as Opus, FFmpeg } from "prism-media";
 import { Video as YouTubeSRVideo, Channel as YouTubeSRChannel, Playlist as YouTubeSRPlaylist } from "youtube-sr";
 import { YouTubeArtist, YouTubePlaylist, YouTubeTrack } from "../youtube/wrappers";
+import internal from "stream";
 
 export interface YTTrack extends Track {
 
@@ -10,7 +10,7 @@ export interface YTTrack extends Track {
   * Fetch Track Audio
   * @param {downloadOptions} ytdlParams - YT-DL Params for Fetching Audio
   */
-  stream: (ytdlParams?: downloadOptions) => Opus.Encoder | FFmpeg;
+  stream: (ytdlParams?: downloadOptions) => internal.Readable;
 }
 
 export interface fetchYouTube {
