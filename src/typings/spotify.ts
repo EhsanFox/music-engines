@@ -1,8 +1,8 @@
 import { Artist, Playlist, Track } from "./base";
 import { downloadOptions } from "ytdl-core";
-import { opus as Opus, FFmpeg } from "prism-media";
 import { SpotifyAlbum, SpotifyArtist, SpotifyPlaylist, SpotifyTrack } from "../spotify/wrappers";
 import { YouTubeTrack } from "../youtube/wrappers";
+import internal from "stream";
 
 export interface SPTrack extends Track {
 
@@ -10,7 +10,7 @@ export interface SPTrack extends Track {
     * Fetch Track Audio
     * @param {downloadOptions} ytdlParams - YT-DL Params for Fetching Audio
     */
-    stream: (ytdlParams?: downloadOptions) => Promise<Opus.Encoder | FFmpeg>;
+    stream: (ytdlParams?: downloadOptions) => Promise<internal.Readable>;
     
 }
 
