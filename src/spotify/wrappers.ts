@@ -1,11 +1,11 @@
 import { SPAlbum, SPArtist, SPPlaylist, SPTrack } from "../typings/spotify";
 import { getData } from "spotify-url-info";
 import { DurationType } from "../typings/base";
-import { opus, FFmpeg } from "prism-media";
 import { downloadOptions } from "ytdl-core";
 import { YouTube } from "../youtube"
 import { YouTubeTrack } from "../youtube/wrappers";
 import { Base } from "../Base";
+import internal from "stream";
 
 class SpotifyTrack extends Base implements SPTrack {
 
@@ -49,7 +49,7 @@ class SpotifyTrack extends Base implements SPTrack {
         }
     }
 
-    stream(ytdlParams?: downloadOptions): Promise<opus.Encoder | FFmpeg> {
+    stream(ytdlParams?: downloadOptions): Promise<internal.Readable> {
         return new Promise((resolve, reject) => {
 
             const searchQuery = `${this.raw.artists[0].name} - ${this.raw.name}`;
