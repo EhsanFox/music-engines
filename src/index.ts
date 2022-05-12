@@ -6,6 +6,7 @@ import { YouTube, YoutubeWrappers, YouTubeExtractor, YouTubeValidator } from "./
 import { Spotify, SpotifyWrappers, SpotifyExtractor, SpotifyValidator } from "./spotify";
 import { SoundCloud, SoundcloudWrappers, SoundcloudExtractor, SoundcloudValidator } from "./soundcloud";
 import { Deezer, DeezerWrappers, DeezerExtractor, DeezerValidator } from "./deezer";
+import { Base } from "./Base";
 
 const typings = {
     youtube: YTTypings,
@@ -18,7 +19,8 @@ const wrappers = {
     youtube: YoutubeWrappers,
     spotify: SpotifyWrappers,
     soundcloud: SoundcloudWrappers,
-    deezer: DeezerWrappers
+    deezer: DeezerWrappers,
+    Base,
 };
 
 const validators = {
