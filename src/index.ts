@@ -20,7 +20,6 @@ const wrappers = {
     spotify: SpotifyWrappers,
     soundcloud: SoundcloudWrappers,
     deezer: DeezerWrappers,
-    Base,
 };
 
 const validators = {
@@ -45,5 +44,6 @@ export {
     YouTube,
     Spotify,
     SoundCloud,
-    Deezer
+    Deezer,
+    Base
 }
