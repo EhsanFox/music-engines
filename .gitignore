@@ -71,3 +71,4 @@ jspm_packages/
 
 # FuseBox cache
 .fusebox/
+v1/*
