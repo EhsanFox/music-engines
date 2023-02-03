@@ -63,5 +63,8 @@
     "deezer-api",
     "setar",
     "setar-bot"
-  ]
+  ],
+  "dependencies": {
+    "youtube-sr": "^4.3.4"
+  }
 }
