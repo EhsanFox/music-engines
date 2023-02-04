@@ -2,7 +2,7 @@ export type IDrivers = "spotify" | "youtube" | "soundcloud" | "deezer";
 
 export interface ISearchOptionBase<TypeList, ReqOptsType> {
   type: TypeList;
-  requestOptions: ReqOptsType;
+  requestOptions?: ReqOptsType;
 }
 
 export interface IDriverBase<

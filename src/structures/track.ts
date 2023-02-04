@@ -7,7 +7,7 @@ export class Track implements TrackBase {
     readonly platform: string,
     readonly id: string,
     readonly title: string,
-    readonly picture: string,
+    readonly description: string,
     readonly url: string,
     durationData: { data: number; isMs?: boolean }
   ) {

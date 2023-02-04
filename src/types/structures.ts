@@ -6,12 +6,23 @@ export interface DurationType {
   hour: number;
   format: string;
 }
+
+export interface ThumbnailBase {
+  url: string;
+}
+
+export interface AuthorBase {
+  name: string;
+  url: string;
+  id: string;
+}
+
 export interface TrackBase {
   platform: string;
   id: string;
   title: string;
-  picture: string;
   url: string;
+  description: string;
   duration: DurationType;
   /**
    * Track DurationFormater(used by Constructor)
