@@ -1,7 +1,12 @@
+import fs from "fs";
 import { Spotify } from "../src";
+const myDriver = new Spotify();
 
-const myEngine = new Spotify();
-
-myEngine.use('https://open.spotify.com/track/2nZ33CKRbgpJQJJQKHuGXb?si=pRSi1AyyRFG4E7urmYqJ-g')
-.then(console.log)
-.catch(console.error);
+myDriver
+  .getById(`0jdso14vaFnpRazMLEZovF`)
+  .then((data) => {
+    console.log(data);
+    const musicBuffer = data.stream();
+    musicBuffer.pipe(fs.createWriteStream(`${data.id}.mp3`));
+  })
+  .catch(console.error);
