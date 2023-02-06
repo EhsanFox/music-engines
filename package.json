@@ -65,7 +65,9 @@
     "setar-bot"
   ],
   "dependencies": {
+    "himalaya": "^1.1.0",
     "node-fetch": "^3.3.0",
+    "spotify-uri": "^3.0.3",
     "youtube-sr": "^4.3.4",
     "ytdl-core": "^4.11.2"
   }

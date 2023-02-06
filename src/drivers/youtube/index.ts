@@ -39,3 +39,4 @@ export default class YouTube implements IYouTubeDriver {
     return this._scrapper.getVideo(rawData);
   }
 }
+export * from "./structures";
