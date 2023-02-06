@@ -1,8 +1,16 @@
 import { Author } from "../../../structures";
-import { ISpotifyArtist } from "../../../types";
+import { ISpotifyArtist, ISpotifyCover } from "../../../types";
 
-export class SpotifyArtist extends Author implements ISpotifyArtist<string> {
-  constructor(id: string, name: string, url: string, readonly picture: string) {
+export class SpotifyArtist
+  extends Author
+  implements ISpotifyArtist<ISpotifyCover>
+{
+  constructor(
+    id: string,
+    name: string,
+    url: string,
+    readonly picture?: ISpotifyCover | ISpotifyCover[]
+  ) {
     super(name, id, url);
   }
 }

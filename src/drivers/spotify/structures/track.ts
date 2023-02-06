@@ -1,16 +1,26 @@
 import { Readable } from "stream";
 import ytdl, { downloadOptions } from "ytdl-core";
 import { Track } from "../../../structures";
-import { IDrivers, ISpotifyArtist, ISpotifyTrack } from "../../../types";
+import {
+  IDrivers,
+  ISpotifyArtist,
+  ISpotifyCover,
+  ISpotifyTrack,
+} from "../../../types";
 
-export class SpotifyTrack extends Track implements ISpotifyTrack<string> {
+export class SpotifyTrack
+  extends Track
+  implements ISpotifyTrack<ISpotifyCover>
+{
   constructor(
     id: string,
     url: string,
     title: string,
     duration: { data: number; isMs?: boolean },
-    readonly picture: string,
-    readonly author: ISpotifyArtist<string>,
+    readonly picture: ISpotifyCover | ISpotifyCover[],
+    readonly author:
+      | ISpotifyArtist<ISpotifyCover>
+      | ISpotifyArtist<ISpotifyCover>[],
     private readonly ytUrl: string,
     platform: IDrivers = "spotify"
   ) {

@@ -4,6 +4,7 @@
 import fetch from "node-fetch";
 import { formatEmbedURL, formatOpenURL, parse } from "spotify-uri";
 import { Element, parse as hParse } from "himalaya";
+import { SpotifyGetDataResult } from "../../types";
 
 const TYPE = {
   ALBUM: "album",
@@ -15,7 +16,7 @@ const TYPE = {
 
 const SUPPORTED_TYPES = Object.values(TYPE);
 
-const createGetData = () => async (url: string) => {
+const createGetData = () => async (url: string): SpotifyGetDataResult => {
   const parsedUrl = getParsedUrl(url);
   const embedURL = formatEmbedURL(parsedUrl);
 

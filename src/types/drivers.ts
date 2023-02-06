@@ -13,7 +13,7 @@ export interface IDriverBase<
 > {
   config: ConfigType;
   platform: IDrivers;
-  search: (
+  search?: (
     query: string,
     options: ISearchOptionBase<SearchTypeList, ReqOptsType>
   ) => Promise<TrackType | TrackType[]>;
