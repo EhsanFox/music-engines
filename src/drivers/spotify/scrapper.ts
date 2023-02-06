@@ -16,49 +16,51 @@ const TYPE = {
 
 const SUPPORTED_TYPES = Object.values(TYPE);
 
-const createGetData = () => async (url: string): SpotifyGetDataResult => {
-  const parsedUrl = getParsedUrl(url);
-  const embedURL = formatEmbedURL(parsedUrl);
+const createGetData =
+  () =>
+  async (url: string): SpotifyGetDataResult => {
+    const parsedUrl = getParsedUrl(url);
+    const embedURL = formatEmbedURL(parsedUrl);
 
-  const response = await fetch(embedURL);
-  const text = await response.text();
-  const embed = hParse(text) as Element[];
+    const response = await fetch(embedURL);
+    const text = await response.text();
+    const embed = hParse(text) as Element[];
 
-  let scripts = embed.find((el: Element) => el.tagName === "html");
+    let scripts = embed.find((el: Element) => el.tagName === "html");
 
-  if (scripts === undefined)
-    throw new Error(`Couldn't find scripts to fetch data.`);
+    if (scripts === undefined)
+      throw new Error(`Couldn't find scripts to fetch data.`);
 
-  scripts = scripts.children
-    .find((el) => el.tagName === "body")
-    .children.filter(({ tagName }) => tagName === "script");
+    scripts = scripts.children
+      .find((el) => el.tagName === "body")
+      .children.filter(({ tagName }) => tagName === "script");
 
-  let script = scripts.find((script) =>
-    script.attributes.some(({ value }) => value === "resource")
-  );
+    let script = scripts.find((script) =>
+      script.attributes.some(({ value }) => value === "resource")
+    );
 
-  if (script !== undefined) {
-    // found data in the older embed style
-    return normalizeData({
-      data: JSON.parse(Buffer.from(script.children[0].content, "base64")),
-    });
-  }
+    if (script !== undefined) {
+      // found data in the older embed style
+      return normalizeData({
+        data: JSON.parse(Buffer.from(script.children[0].content, "base64")),
+      });
+    }
 
-  script = scripts.find((script) =>
-    script.attributes.some(({ value }) => value === "initial-state")
-  );
+    script = scripts.find((script) =>
+      script.attributes.some(({ value }) => value === "initial-state")
+    );
 
-  if (script !== undefined) {
-    // found data in the new embed style
-    const data = JSON.parse(Buffer.from(script.children[0].content, "base64"))
-      .data.entity;
-    return normalizeData({ data });
-  }
+    if (script !== undefined) {
+      // found data in the new embed style
+      const data = JSON.parse(Buffer.from(script.children[0].content, "base64"))
+        .data.entity;
+      return normalizeData({ data });
+    }
 
-  throw new Error(
-    `Couldn't find any data in embed page that we know how to parse.`
-  );
-};
+    throw new Error(
+      `Couldn't find any data in embed page that we know how to parse.`
+    );
+  };
 
 function getParsedUrl(url) {
   try {
@@ -67,7 +69,6 @@ function getParsedUrl(url) {
     return formatEmbedURL(parsedURL);
   } catch (e) {
     throw new TypeError(`Couldn't parse '${url}' as valid URL`);
-    
   }
 }
 

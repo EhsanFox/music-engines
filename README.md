@@ -13,12 +13,9 @@
 - [Platforms](#platforms)
 - [Documents](#documents)
 - [Examples](#examples)
-    - [YouTube Downloader](#youtube-downloader)
-    - [Discord Bot](#discord-bot)
-- [Credits](#credits)
 
 ### Why music-engines?
-music-engine currently Supports **4** biggest platform that we all know all-in-one package and access to the Audio buffers directly from the platform API, so we are **all-in-one** and we have **download feature**
+music-engine currently Supports **3** biggest platform that we all know all-in-one package and access to the Audio buffers directly from the platform API, so we are **all-in-one** and we have **download feature**
 
 ### Installation
 - Using NPM
@@ -31,55 +28,18 @@ music-engine currently Supports **4** biggest platform that we all know all-in-o
 
 ### Features
 - [x] Custom Data Wrapper
-- [x] No Token Required
+- [x] No Token Required / Yet Optional for some drivers
 - [x] Music Buffers (sometimes FFMPEG or Opus)
 
 ### Platforms
 - [x] YouTube
 - [x] SoundCloud
 - [x] Spotify
-- [x] Deezer
+- [ ] Deezer
 - [ ] Radio Javan (Maybe, maybe not)
 
 ### Documents
-Documents are live at [/music-engines](https://ehsan.js.org/music-engines/)
+Documents are down currently.
 
 ### Examples
-
-#### YouTube Downloader
-```js
-const { YouTube } = require("music-engines");
-const myEngine = new YouTube();
-
-myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })
-.then(resultArray => {
-    const track = resultArray[0];
-    const audioBuffer = track.stream()
-    audioBuffer.pipe(fs.createWritestream("music.mp3"))
-})
-.catch(console.error)
-```
-
-#### Discord Bot
-```js
-const { YouTube } = require("music-engines");
-const myEngine = new YouTube();
-
-myEngine.use('https://www.youtube.com/watch?v=KQlyGYCKGGA', { format: true })
-.then(resultArray => {
-    const track = resultArray[0];
-
-    // Disabling chunking is recommended in Discord bots
-    const audioBuffer = track.stream({ filter: 'audioonly', dlChunkSize: 0 })
-    // Discord.js Stuff....
-    const connection = await voiceChannel.join();
-    const dipatcher = connection.play(audioBuffer)
-        
-    // Enjoy the Music
-})
-.catch(console.error)
-```
-- More Examples would be added soon (PR's are welcome)
-
-### Credits
-- Thanks to [Kambiz](https://github.com/Scrip7) for all the helps on the package and Future PR's
+Examples usages are available in [test directory](https://github.com/EhsanFox/music-engines/tree/main/test)

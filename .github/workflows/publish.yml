@@ -1,4 +1,4 @@
-name: 📤 | Publish Package & Build Docs
+name: 📤 | Publish Package
 
 on:
   push:
@@ -27,32 +27,3 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
-    steps:
-      - name: 💥 | Checkout
-        uses: actions/checkout@v2
-
-      - name: 🚀 | Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-        
-      - name: 📩 | Install Packages
-        run: npm install
-
-      - name: 🛠 | Generating
-        run: npm run build-docs
-
-      - name: 🔴 | Publish Docs
-        uses: SwiftDocOrg/github-wiki-publish-action@v1
-        with:
-          path: "docs"
-        env:
-          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
