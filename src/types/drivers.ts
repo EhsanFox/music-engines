@@ -17,7 +17,7 @@ export interface IDriverBase<
     query: string,
     options: ISearchOptionBase<SearchTypeList, ReqOptsType>
   ) => Promise<TrackType | TrackType[]>;
-  getById: (
+  getById?: (
     id: string | number,
     options: ISearchOptionBase<SearchTypeList, ReqOptsType>
   ) => Promise<TrackType>;

@@ -8,7 +8,7 @@ import {
 import YouTube from "../youtube";
 import { SpotifyFormatter } from "./formatter";
 import SpotifyScrapper from "./scrapper";
-export default class SpotifyDriver implements ISpotifyDriver {
+export default class Spotify implements ISpotifyDriver {
   readonly _scrapper: typeof SpotifyScrapper = SpotifyScrapper;
   readonly _formatter: SpotifyFormatter = new SpotifyFormatter();
   readonly platform: IDrivers = "spotify";
