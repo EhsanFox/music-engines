@@ -2,8 +2,8 @@
 // @ts-nocheck
 
 import fetch from "node-fetch";
-import spotifyURI from "spotify-uri";
-import { Element, parse } from "himalaya";
+import { formatEmbedURL, formatOpenURL, parse } from "spotify-uri";
+import { Element, parse as hParse } from "himalaya";
 
 const TYPE = {
   ALBUM: "album",
@@ -17,11 +17,11 @@ const SUPPORTED_TYPES = Object.values(TYPE);
 
 const createGetData = () => async (url: string) => {
   const parsedUrl = getParsedUrl(url);
-  const embedURL = spotifyURI.formatEmbedURL(parsedUrl);
+  const embedURL = formatEmbedURL(parsedUrl);
 
   const response = await fetch(embedURL);
   const text = await response.text();
-  const embed = parse(text) as Element[];
+  const embed = hParse(text) as Element[];
 
   let scripts = embed.find((el: Element) => el.tagName === "html");
 
@@ -61,11 +61,12 @@ const createGetData = () => async (url: string) => {
 
 function getParsedUrl(url) {
   try {
-    const parsedURL = spotifyURI.parse(url);
+    const parsedURL = parse(url);
     if (!parsedURL.type) throw new TypeError();
-    return spotifyURI.formatEmbedURL(parsedURL);
-  } catch (_) {
+    return formatEmbedURL(parsedURL);
+  } catch (e) {
     throw new TypeError(`Couldn't parse '${url}' as valid URL`);
+    
   }
 }
 
@@ -73,7 +74,7 @@ const getImages = (data) => data.coverArt?.sources || data.images;
 
 const getDate = (data) => data.releaseDate?.isoString || data.release_date;
 
-const getLink = (data) => spotifyURI.formatOpenURL(data.uri);
+const getLink = (data) => formatOpenURL(data.uri);
 
 function getArtistTrack(track) {
   return track.show
