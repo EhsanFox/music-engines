@@ -33,7 +33,24 @@ export default class YouTube implements IYouTubeDriver {
       type: "video",
     }
   ): Promise<YouTubeVideo> {
+    if (!this.validator.validate(id as string, "VIDEO_ID"))
+      throw new Error(`${id} is an invalid YouTube ID.`);
     const url = `https://www.youtube.com/watch?v=${id}`;
+    const rawData = await this._scrapper._engine.getHTML(
+      `${url}&hl=en`,
+      options.requestOptions ? options.requestOptions : {}
+    );
+    return this._scrapper.getVideo(rawData);
+  }
+
+  async getByUrl(
+    url: string,
+    options: ISearchOptionBase<"video", RequestInit | undefined> = {
+      type: "video",
+    }
+  ): Promise<YouTubeVideo> {
+    if (!this.validator.validate(url, "VIDEO"))
+      throw new Error(`an invalid YouTube URL recived.`);
     const rawData = await this._scrapper._engine.getHTML(
       `${url}&hl=en`,
       options.requestOptions ? options.requestOptions : {}
