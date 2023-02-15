@@ -2,10 +2,12 @@ import YouTubeScrapper from "./scrapper";
 import YouTubeFormatter from "./formatter";
 import { IDrivers, ISearchOptionBase, IYouTubeDriver } from "../../types";
 import { YouTubeVideo } from "./structures";
+import { YouTubeValidator } from "./validator";
 
 export default class YouTube implements IYouTubeDriver {
   readonly _scrapper: YouTubeScrapper = new YouTubeScrapper();
   readonly _formatter: YouTubeFormatter = new YouTubeFormatter();
+  readonly validator: YouTubeValidator = new YouTubeValidator();
   readonly platform: IDrivers = "youtube";
 
   constructor(
