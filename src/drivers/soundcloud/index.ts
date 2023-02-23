@@ -32,3 +32,4 @@ export default class SoundCloud implements ISoundCloudDriver {
     return this._formatter.parseTrack(itemResult, itemStream);
   }
 }
+export * from "./structures";

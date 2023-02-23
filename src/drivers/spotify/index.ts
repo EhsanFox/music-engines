@@ -36,3 +36,4 @@ export default class Spotify implements ISpotifyDriver {
     return this._formatter.parseVideo(result, ytResult[0]);
   }
 }
+export * from "./structures";
