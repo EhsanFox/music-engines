@@ -3,13 +3,14 @@ import { Client } from "soundcloud-scraper";
 import { IDrivers } from "../../types";
 import { ISoundCloudDriver } from "../../types/soundcloud";
 import { SoundCloudFormatter } from "./formatter";
-
 import { SoundCloudTrack } from "./structures";
+import { SoundcloudValidator } from "./validator";
 
 export default class SoundCloud implements ISoundCloudDriver {
   readonly _formatter: SoundCloudFormatter = new SoundCloudFormatter();
   private readonly _client: Client;
   readonly platform: IDrivers = "soundcloud";
+  readonly validator: SoundcloudValidator = new SoundcloudValidator();
 
   constructor(readonly config: string | undefined = undefined) {
     this._client = this.config ? new Client(this.config) : new Client();
@@ -25,6 +26,7 @@ export default class SoundCloud implements ISoundCloudDriver {
   }
 
   async getByUrl(url: string): Promise<SoundCloudTrack> {
+    
     const itemResult = await this._client.getSongInfo(url, {
       fetchStreamURL: true,
     });
