@@ -1,6 +1,6 @@
 {
   "name": "music-engines",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Get Your favorite Music from anywhere you like.",
   "main": "dist/src/index.js",
   "typings": "dist/index.d.ts",
@@ -70,6 +70,6 @@
     "soundcloud-scraper": "^5.0.3",
     "spotify-uri": "^3.0.3",
     "youtube-sr": "^4.3.4",
-    "ytdl-core": "^4.11.2"
+    "ytdl-core": "^4.11.3"
   }
 }
