@@ -38,7 +38,7 @@ body:
     attributes:
       label: Code sample
       description: Include a reproducible, minimal code sample. This will be automatically formatted into code, so no need for backticks.
-      render: typescript
+      render: ts
       placeholder: |
         Your code sample should be...
         ... Minimal - Use as little code as possible that still produces the same problem (and is understandable)

@@ -17,7 +17,7 @@ body:
         - Spotify
         - SoundCloud
         - Deezer
-        - None
+        - Other
     validations:
       required: true
   - type: textarea
