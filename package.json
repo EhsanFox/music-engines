@@ -70,6 +70,6 @@
     "soundcloud-scraper": "^5.0.3",
     "spotify-uri": "^3.0.3",
     "youtube-sr": "^4.3.4",
-    "ytdl-core": "^4.11.3"
+    "ytdl-core": "^4.11.4"
   }
 }
